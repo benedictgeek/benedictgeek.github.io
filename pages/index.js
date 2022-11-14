@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
+import { experiences } from "../data/experience";
+import { projects } from "../data/projects";
 
 export default function Home() {
   return (
@@ -120,8 +122,24 @@ export default function Home() {
                   <div className="name-job">
                     <h1>DAUDA OLUSHOLA BENEDICT</h1>
                     <span className="job"> Software Engineer </span>
+                    <div className="details-section">
+                      <div className="profile-detail"> +2348139194625 </div>
+                      <div className="profile-detail">
+                        {" "}
+                        olushola251@gmail.com{" "}
+                      </div>
+                      <div className="profile-detail"> Lagos, Nigeria </div>
+                    </div>
                   </div>
                   {/* .name-job */}
+                  <p className="body-text" style={{ padding: "10px 10px" }}>
+                    Software engineer with 4 years of experience, passionate
+                    about building solutions that further makes human lives
+                    easier. I am well-versed in maintaining all aspects of a
+                    software development cycle. My proven leadership and
+                    communication skills have helped me meet companies
+                    objectives.
+                  </p>
                   <div className="social-icons">
                     <a className="facebook" href="mailto:olushola251@gmail.com">
                       <i className="fa fa-envelope" />
@@ -166,11 +184,11 @@ export default function Home() {
                   <i className="fa fa-bars right-menu" onClick={null} />
                 </div>
                 <ul className="top-menu">
-                  <li>
+                  {/* <li>
                     <a className="selected page-scroll" href="#about">
                       <i className="fa fa-user" /> <span> ABOUT </span>
                     </a>
-                  </li>
+                  </li> */}
                   <li>
                     <a className="page-scroll" href="#experience">
                       <i className="fa fa-suitcase" /> <span> EXPERIENCE </span>
@@ -194,68 +212,7 @@ export default function Home() {
                   </li>
                 </ul>
                 {/*Right Content */}
-                {/*About Section*/}
-                <div id="about" className="content col-md-12 fadeInUp">
-                  <div className="row">
-                    <div className="page-title">
-                      <h2>About Me</h2>
-                    </div>
-                    <div className="col-md-12 pinfo">
-                      <div className="col-md-12 about-info">
-                        <ul className="info-list">
-                          <li>
-                            Phone : <span>2348139194625</span>
-                          </li>
-                          <li>
-                            Email : <span>olushola251@gmail.com</span>
-                          </li>
-                          <li>
-                            Address : <span>Lagos, Nigeria</span>
-                          </li>
-                          {/* <li>Website : <span>www.chrisjohnson.com</span></li>
-                      <li>Email : <span>chris@domain.com</span></li>
-                      <li>Skype : <span>chrisjohnson85</span></li> */}
-                        </ul>
-                      </div>
-                      {/* .col-md-4 .about-info */}
-                    </div>
-                    <div
-                      className="col-md-12 spotted ptext"
-                      style={{ paddingTop: "40px", paddingBottom: "40px" }}
-                    >
-                      <div className="col-md-12 about-text">
-                        {/* <h2 class="section-title">I’m Web Designer</h2> */}
-                        <p>
-                          My motivation as a software engineer naturally comes
-                          from working on products that have a positive impact
-                          on end users. Always learning to further hone my
-                          skills, I enjoy collaborating with open minded people,
-                          contributing the skills I have acquired so far into
-                          delivering better products and contributing to the
-                          growth of the organization.
-                        </p>
-                        <br />
-                        <p>
-                          Apart from coding and bug fixes, I enjoy listening to
-                          music, it refreshes my mind and often sets me in a
-                          good mood. I'm a football fan, I like to play as well
-                          as watch professionals play. I like to help people
-                          from within my capacity in terms of both intellect and
-                          resources, I derive joy doing that.
-                        </p>
-                      </div>
-                      {/*.col-md-12 .about-text end*/}
-                    </div>
-                    {/* .col-md-12 .spotted */}
-                    {/*footer*/}
-                    {/* <footer class="footer">
-                  <p>Copyright © 2016 All right reserved</p>
-                </footer> */}
-                  </div>
-                  {/*.row end*/}
-                </div>
-                {/* #about .content .col-md-12 end */}
-                {/*Resume Section */}
+
                 <div id="experience" className="content col-md-12">
                   <div className="row">
                     <div className="page-title">
@@ -268,45 +225,31 @@ export default function Home() {
                           <i className="fa fa-suitcase" />
                         </div>
                         <div className="resume-out">
-                          <div className="resume-info">
-                            <h2 className="info-title">
-                              Software Engineer/Team Lead - Algorism Limited
-                            </h2>
-                            <span className="info-date">
-                              September 2019 - present{" "}
-                            </span>
-                            <p>
-                              Managing a team as well as seamlessly developing
-                              and deploying resilient applications. I build
-                              production ready backend services, I design and
-                              develop intuitive user interafces, and develop
-                              user friendly mobile applications.
-                            </p>
-                          </div>
-                          {/* .resume-info */}
-                          <div className="resume-info">
-                            <h2 className="info-title">
-                              Freelance Software Engineer
-                            </h2>
-                            <span className="info-date">
-                              September 2018 - August 2019
-                            </span>
-                            <p>
-                              I developed interactive and responsive user
-                              interafces for happy clients, built accompanied
-                              backend services and helped with troubleshooting
-                              and debugging. I also trained clients for optimal
-                              use of delivered software.
-                            </p>
-                          </div>
+                          {experiences.map((experience, index) => {
+                            return (
+                              <div
+                                key={`experience ${index}`}
+                                className="resume-info"
+                              >
+                                <h2 className="info-title">
+                                  {experience.title}{" "}
+                                  {experience.company != null &&
+                                    `- ${experience.company}`}
+                                </h2>
+                                <span className="info-date">
+                                  {experience.date}
+                                </span>
+                                <ul>
+                                  {experience.responsibilities.map((resp) => {
+                                    return <li>{resp}</li>;
+                                  })}
+                                </ul>
+                              </div>
+                            );
+                          })}
                         </div>
                         {/* .resume-out end */}
                       </div>
-                      {/* .resume-education .col-md-12 end */}
-                      {/*footer*/}
-                      {/* <footer class="footer">
-                    <p>Copyright © 2016 All right reserved</p>
-                  </footer> */}
                     </div>
                     {/* .col-md-12 .page */}
                   </div>
@@ -360,88 +303,25 @@ export default function Home() {
                       className="col-md-12 col-sm-12 col-xs-12"
                       style={{ marginTop: "15px" }}
                     >
-                      <div className="resume-out">
-                        <div className="resume-info portfolio">
-                          <h2 className="info-title">
-                            <a
-                              target="_blank"
-                              className="portfolio-link"
-                              href="https://clubly.io"
-                            >
-                              Clubly
-                            </a>
-                          </h2>
-                          <span className="info-date">Lead</span>
-                          <p>
-                            An association management platform where
-                            associations get to bring their activites such as
-                            Members management, Events, Finances, Surveys, and
-                            Dues to be managed by the platform.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="resume-out">
-                        <div className="resume-info portfolio">
-                          <h2 className="info-title">
-                            <a
-                              target="_blank"
-                              className="portfolio-link"
-                              href="https://peerscore.ng"
-                            >
-                              PeerScore
-                            </a>
-                          </h2>
-                          <span className="info-date">Lead</span>
-                          <p>
-                            A peer-to-peer lending mobile application
-                            facilitating loan repayments and ensuring financial
-                            responsibility. Available for both Android and iOS
-                            devices.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="resume-out">
-                        <div className="resume-info portfolio">
-                          <h2 className="info-title">
-                            <a
-                              target="_blank"
-                              className="portfolio-link"
-                              href="https://www.getrates.co"
-                            >
-                              Getrates
-                            </a>
-                          </h2>
-                          <span className="info-date">Member</span>
-                          <p>
-                            An investment platform serving as a broker between
-                            users and financial institutions. The institutions
-                            bring their investment products on to the platform,
-                            users invest and Getrates manages their investments.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="resume-out">
-                        <div className="resume-info portfolio">
-                          <h2 className="info-title">
-                            <a
-                              target="_blank"
-                              className="portfolio-link"
-                              href="https://jcnfitwears.com"
-                            >
-                              JCN Fitwears
-                            </a>
-                          </h2>
-                          <span className="info-date">Freelance</span>
-                          <p>
-                            An E-commerce website that specializes in the sales
-                            of fitness wears.
-                          </p>
-                        </div>
-                      </div>
-                      {/*footer*/}
-                      {/* <footer class="footer">
-                    <p>Copyright © 2016 All right reserved</p>
-                  </footer> */}
+                      {projects.map((project) => {
+                        return (
+                          <div className="resume-out">
+                            <div className="resume-info portfolio">
+                              <h2 className="info-title">
+                                <a
+                                  target="_blank"
+                                  className="portfolio-link"
+                                  href={project.url}
+                                >
+                                  {project.title}
+                                </a>
+                              </h2>
+                              <span className="info-date">{project.role}</span>
+                              <p>{project.details}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                     {/* .col-md-12 .page */}
                   </div>
@@ -459,11 +339,20 @@ export default function Home() {
                       <div className="col-md-6 my-skills">
                         <ul className="skill-list">
                           <li>
-                            <h3>Javascript</h3>
+                            <h3>JavaScript</h3>
                             <div className="progress">
                               <div
                                 className="percentage"
-                                style={{ width: "80%" }}
+                                style={{ width: "90%" }}
+                              />
+                            </div>
+                          </li>
+                          <li>
+                            <h3>TypeScript</h3>
+                            <div className="progress">
+                              <div
+                                className="percentage"
+                                style={{ width: "75%" }}
                               />
                             </div>
                           </li>
@@ -481,7 +370,16 @@ export default function Home() {
                             <div className="progress">
                               <div
                                 className="percentage"
-                                style={{ width: "78%" }}
+                                style={{ width: "85%" }}
+                              />
+                            </div>
+                          </li>
+                          <li>
+                            <h3>Redux</h3>
+                            <div className="progress">
+                              <div
+                                className="percentage"
+                                style={{ width: "85%" }}
                               />
                             </div>
                           </li>
@@ -490,7 +388,7 @@ export default function Home() {
                             <div className="progress">
                               <div
                                 className="percentage"
-                                style={{ width: "75%" }}
+                                style={{ width: "60%" }}
                               />
                             </div>
                           </li>
