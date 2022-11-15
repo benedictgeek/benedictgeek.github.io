@@ -325,6 +325,13 @@ p {
   font-size: 16px;
 }
 
+.profile-detail {
+  color: #c1c1c1;
+  font-weight: 400;
+  line-height: 30px;
+  font-size: 14px;
+}
+
 .profile-info .social-icons {
   padding: 20px;
 }
@@ -638,8 +645,10 @@ ul.skill-list li {
   display: block;
 }
 
-.resume-info p {
-  color: #7f7f7f;
+.resume-info p,
+.resume-info ul,
+.body-text {
+  color: #2c2c2c;
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
@@ -1082,6 +1091,12 @@ ul.skill-list li {
 /*Max Width 991px */
 
 @media screen and (max-width: 991px) {
+  .profile-detail {
+    display: inline;
+  }
+   .profile-detail:not(:last-child)::after {
+    content: "•";
+  }
   .profile {
     margin-bottom: 30px;
   }
@@ -1160,6 +1175,9 @@ ul.skill-list li {
 }
 
 @media only screen and (max-width: 479px) {
+  /* .details-section {
+    display: block;
+  } */
   ul.top-menu li a {
     padding: 27px 0 23px 0;
   }
