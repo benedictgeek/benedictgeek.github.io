@@ -18,7 +18,7 @@ export default function Document() {
 
         <link href="css/colors/switcher.css" rel="stylesheet" type="text/css" />
         <link href="css/colors/color-1.css" rel="stylesheet" type="text/css" />
-        <link
+        {/* <link
           href="css/colors/color-2.css"
           rel="alternate stylesheet"
           type="text/css"
@@ -59,7 +59,7 @@ export default function Document() {
           rel="alternate stylesheet"
           type="text/css"
           title="color-8"
-        />
+        /> */}
 
         <link
           href="https://fonts.googleapis.com/css?family=Lato:400,700,900"

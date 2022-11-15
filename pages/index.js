@@ -1,5 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
+import Script from 'next/script'
+import Image from "next/image"
 import { experiences } from "../data/experience";
 import { projects } from "../data/projects";
 
@@ -33,82 +34,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* <div class="color-switcher">
-      <div class="open"><i class="fa fa-cog fa-spin"></i></div>
-      <h4>SELECT A COLOR</h4>
-      <ul>
-        <li>
-          <a
-            class="color-1"
-            onclick="setActiveStyleSheet('color-1'); return false;"
-            href="#"
-            ><i class="fa fa-circle"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            class="color-2"
-            onclick="setActiveStyleSheet('color-2'); return false;"
-            href="#"
-            ><i class="fa fa-circle"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            class="color-3"
-            onclick="setActiveStyleSheet('color-3'); return false;"
-            href="#"
-            ><i class="fa fa-circle"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            class="color-4"
-            onclick="setActiveStyleSheet('color-4'); return false;"
-            href="#"
-            ><i class="fa fa-circle"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            class="color-5"
-            onclick="setActiveStyleSheet('color-5'); return false;"
-            href="#"
-            ><i class="fa fa-circle"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            class="color-6"
-            onclick="setActiveStyleSheet('color-6'); return false;"
-            href="#"
-            ><i class="fa fa-circle"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            class="color-7"
-            onclick="setActiveStyleSheet('color-7'); return false;"
-            href="#"
-            ><i class="fa fa-circle"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            class="color-8"
-            onclick="setActiveStyleSheet('color-8'); return false;"
-            href="#"
-            ><i class="fa fa-circle"></i
-          ></a>
-        </li>
-      </ul>
-      <button
-        class="switcher-reset"
-        onclick="setActiveStyleSheet('color-1'); return false;"
-      >
-        RESET
-      </button>
-    </div> */}
+
         <div className="parallax" />
         <div id="wrapper">
           <div className="container">
@@ -116,7 +42,8 @@ export default function Home() {
               {/* Profile Informations*/}
               <div className="profile col-md-3 wow fadeInDown">
                 <div className="profile-image">
-                  <img alt="image" src="images/Profile-img.png" />
+                  <Image  alt="image" src="images/Profile-img.png"/>
+                  {/* <img alt="image" src="images/Profile-img.png" /> */}
                 </div>
                 <div className="profile-info">
                   <div className="name-job">
@@ -146,6 +73,7 @@ export default function Home() {
                     </a>
                     <a
                       target="_blank"
+                      rel="noreferrer" 
                       className="facebook"
                       href="https://github.com/benedictgeek/"
                     >
@@ -153,6 +81,7 @@ export default function Home() {
                     </a>
                     <a
                       target="_blank"
+                      rel="noreferrer" 
                       className="behance"
                       href="https://www.linkedin.com/in/olushola-dauda-542a71130/"
                     >
@@ -160,6 +89,7 @@ export default function Home() {
                     </a>
                     <a
                       target="_blank"
+                      rel="noreferrer" 
                       className="twitter"
                       href="https://twitter.com/IamD_O_B"
                     >
@@ -167,6 +97,7 @@ export default function Home() {
                     </a>
                     <a
                       target="_blank"
+                      rel="noreferrer" 
                       className="facebook"
                       href="https://benedictgeek.medium.com/"
                     >
@@ -184,11 +115,6 @@ export default function Home() {
                   <i className="fa fa-bars right-menu" onClick={null} />
                 </div>
                 <ul className="top-menu">
-                  {/* <li>
-                    <a className="selected page-scroll" href="#about">
-                      <i className="fa fa-user" /> <span> ABOUT </span>
-                    </a>
-                  </li> */}
                   <li>
                     <a className="page-scroll" href="#experience">
                       <i className="fa fa-suitcase" /> <span> EXPERIENCE </span>
@@ -240,8 +166,8 @@ export default function Home() {
                                   {experience.date}
                                 </span>
                                 <ul>
-                                  {experience.responsibilities.map((resp) => {
-                                    return <li>{resp}</li>;
+                                  {experience.responsibilities.map((resp, index) => {
+                                    return <li key={`exp-item-${index}`}>{resp}</li>;
                                   })}
                                 </ul>
                               </div>
@@ -282,18 +208,11 @@ export default function Home() {
                         </div>
                         {/* .resume-out end */}
                       </div>
-                      {/* .resume-education .col-md-12 end */}
-                      {/*footer*/}
-                      {/* <footer class="footer">
-                    <p>Copyright © 2016 All right reserved</p>
-                  </footer> */}
                     </div>
                     {/* .col-md-12 .page */}
                   </div>
                   {/*.row end*/}
                 </div>
-                {/* #resume .content .col-md-12 end */}
-                {/*Portfolio Section */}
                 <div id="portfolio" className="content col-md-12">
                   <div className="row">
                     <div className="page-title">
@@ -303,13 +222,14 @@ export default function Home() {
                       className="col-md-12 col-sm-12 col-xs-12"
                       style={{ marginTop: "15px" }}
                     >
-                      {projects.map((project) => {
+                      {projects.map((project, index) => {
                         return (
-                          <div className="resume-out">
+                          <div key={`project ${index}`} className="resume-out">
                             <div className="resume-info portfolio">
                               <h2 className="info-title">
                                 <a
                                   target="_blank"
+                                  rel="noreferrer"
                                   className="portfolio-link"
                                   href={project.url}
                                 >
@@ -463,31 +383,6 @@ export default function Home() {
                             <p>Mobile App development</p>
                           </div>
                         </div>
-                        {/* .service .col-md-4 .col-sm-6 end */}
-                        {/* <div class="service col-md-4 col-sm-6">
-                      <i class="fa fa-code"></i>
-                      <div class="features">
-                        <b>Development</b>
-                        <p>Curabitur euismod sapien</p>
-                      </div>
-                    </div> */}
-                        {/* .service .col-md-4 .col-sm-6 end */}
-                        {/* <div class="service col-md-4 col-sm-6">
-                      <i class="fa fa-search"></i>
-                      <div class="features">
-                        <b>Seo Optimization</b>
-                        <p>Etiam vitae condimentum</p>
-                      </div>
-                    </div> */}
-                        {/* .service .col-md-4 .col-sm-6 end */}
-                        {/* <div class="service col-md-4 col-sm-6">
-                      <i class="fa fa-support"></i>
-                      <div class="features">
-                        <b>Speed Support</b>
-                        <p>Praesent nisl turpis</p>
-                      </div>
-                    </div> */}
-                        {/* .service .col-md-4 .col-sm-6 end */}
                       </div>
                       {/* .col-md-12 .services */}
                     </div>
@@ -506,18 +401,18 @@ export default function Home() {
         {/* #wrapper end*/}
         <div id="overlay" />
 
-        <script src="js/jquery-2.1.4.min.js"></script>
+        <Script src="js/jquery-2.1.4.min.js"></Script>
 
-        <script src="js/jquery.easytabs.min.js"></script>
-        {/* <script src="http://maps.google.com/maps/api/js?"></script>  */}
-        <script src="js/isotope.pkgd.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/styleswitcher.js"></script>
-        <script src="perfect-scrollbar/jquery.mousewheel.js"></script>
-        <script src="perfect-scrollbar/perfect-scrollbar.js"></script>
-        <script src="js/main.js"></script>
+        <Script src="js/jquery.easytabs.min.js"></Script>
+        {/* <Script src="http://maps.google.com/maps/api/js?"></Script>  */}
+        <Script src="js/isotope.pkgd.min.js"></Script>
+        <Script src="js/jquery.magnific-popup.min.js"></Script>
+        <Script src="js/styleswitcher.js"></Script>
+        <Script src="perfect-scrollbar/jquery.mousewheel.js"></Script>
+        <Script src="perfect-scrollbar/perfect-scrollbar.js"></Script>
+        <Script src="js/main.js"></Script>
 
-        <script src="js/ready.js"></script>
+        <Script src="js/ready.js"></Script>
       </div>
     </div>
   );
