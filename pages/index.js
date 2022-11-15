@@ -401,10 +401,9 @@ export default function Home() {
         {/* #wrapper end*/}
         <div id="overlay" />
 
-        <Script src="js/jquery-2.1.4.min.js"></Script>
+        {/* <Script src="js/jquery-2.1.4.min.js"></Script>
 
         <Script src="js/jquery.easytabs.min.js"></Script>
-        {/* <Script src="http://maps.google.com/maps/api/js?"></Script>  */}
         <Script src="js/isotope.pkgd.min.js"></Script>
         <Script src="js/jquery.magnific-popup.min.js"></Script>
         <Script src="js/styleswitcher.js"></Script>
@@ -412,7 +411,7 @@ export default function Home() {
         <Script src="perfect-scrollbar/perfect-scrollbar.js"></Script>
         <Script src="js/main.js"></Script>
 
-        <Script src="js/ready.js"></Script>
+        <Script src="js/ready.js"></Script> */}
       </div>
     </div>
   );
