@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       lineHeight: 1.5,
+      fontSize: 14,
     },
   },
   plugins: [],

@@ -8,14 +8,14 @@ export const HeroSection = () => {
       style={{ backgroundImage: `url(/images/code-bg.jpeg)` }}
     >
       <div className=" bg-black opacity-[0.85] absolute top-0 left-0 w-full h-full"></div>
-      <div className="absolute top-[60%] translate-y-[-60%] left-[300px] right-[300px] z-[1] text-center py-12">
-        <h1>
+      <div className=" absolute right-0 left-0 top-[50%] translate-y-[-50%] z-[1] text-center py-12">
+        <h1 className="text-[34px] sm:text-[64px] sm:mt-[5%]">
           I'm{" "}
-          <span className=" font-[600] text-[64px] leading-[1.3rem] tracking-[0.5px]">
+          <span className=" font-[600] leading-[1.3rem] tracking-[0.5px]">
             Olushola
           </span>
           , a <br />
-          <span className=" font-[600] text-[64px] leading-[1.3em] tracking-[0.5px]">
+          <span className=" font-[600] leading-[1.3em] tracking-[0.5px]">
             Software Engineer
           </span>
           .
@@ -23,9 +23,9 @@ export const HeroSection = () => {
         <div className="mt-[40px]">
           <Button
             href="#about"
-            className=" rounded-[30px] bg-[#007bff] border-[#007bff]"
+            className=" rounded-[30px] bg-[#007bff] border-[#007bff] py-[15px] px-[30px] text-[12px]"
           >
-            Get Started
+            GET STARTED
           </Button>
         </div>
       </div>

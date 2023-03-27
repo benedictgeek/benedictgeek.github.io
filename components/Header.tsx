@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [fadeHeaderBg, setFadeHeaderBg] = useState(true);
   const { currentHash, setCurrentHash } = useAppContext();
   const navLinkClassName = `
   text-[14px] px-[20px] spacing-1 relative tracking-[1px] text-white/75 transition-all duration-500 hover:text-white
@@ -13,7 +14,6 @@ export const Header = () => {
 
   useEffect(() => {
     const handleRouteChange = (evt: HashChangeEvent) => {
-      //   console.log("URL CHANGE \n\n", evt.newURL);
       setCurrentHash(evt.newURL.split("#")[1] || "");
     };
 
@@ -24,8 +24,13 @@ export const Header = () => {
 
   useEffect(() => {
     const handleScroll = (evt: Event) => {
-      console.log("scroll \n\n", evt);
-      //   setCurrentHash(evt.newURL.split("#")[1] || "");
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop > 150) {
+        setFadeHeaderBg(false);
+      } else {
+        setFadeHeaderBg(true);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -34,7 +39,11 @@ export const Header = () => {
   }, []);
 
   return (
-    <nav className="fixed w-full bg-black py-[25px] px-[1rem] z-[1]">
+    <nav
+      className={`fixed w-full ${
+        fadeHeaderBg ? "bg-transparent" : "bg-black"
+      } py-[25px] px-[1rem] z-[1] transition-colors`}
+    >
       <div className=" flex justify-between items-center flex-wrap w-full mx-auto px-[15px]">
         <a className=" w-[110px] leading-[0] p-0" href="#">
           <img src="images/logo-light.png" alt="Logo" className="w-full" />
