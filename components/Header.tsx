@@ -1,16 +1,20 @@
+import { useAppContext } from "@/state/AppContextProvider";
 import { Button } from "@/utility/Button";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 export const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  const navLinkClassNaame = `
-  text-[14px] px-[20px] spacing-1 relative tracking-[1px] text-white/75 transition-all duration-500 hover:text-white 
+  const { currentHash, setCurrentHash } = useAppContext();
+  const navLinkClassName = `
+  text-[14px] px-[20px] spacing-1 relative tracking-[1px] text-white/75 transition-all duration-500 hover:text-white
   `;
+
+  const activeLinkClassName = `!text-white`;
 
   useEffect(() => {
     const handleRouteChange = (evt: HashChangeEvent) => {
-      console.log("URL CHANGE \n\n", evt.newURL);
+      //   console.log("URL CHANGE \n\n", evt.newURL);
+      setCurrentHash(evt.newURL.split("#")[1] || "");
     };
 
     window.addEventListener("hashchange", handleRouteChange);
@@ -18,8 +22,19 @@ export const Header = () => {
     return () => window.removeEventListener("hashchange", handleRouteChange);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = (evt: Event) => {
+      console.log("scroll \n\n", evt);
+      //   setCurrentHash(evt.newURL.split("#")[1] || "");
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed w-full bg-black py-[25px] px-[1rem]">
+    <nav className="fixed w-full bg-black py-[25px] px-[1rem] z-[1]">
       <div className=" flex justify-between items-center flex-wrap w-full mx-auto px-[15px]">
         <a className=" w-[110px] leading-[0] p-0" href="#">
           <img src="images/logo-light.png" alt="Logo" className="w-full" />
@@ -63,20 +78,35 @@ export const Header = () => {
           } basis-full items-center transition-all sm:flex sm:basis-0`}
           id="navbarNav"
         >
-          <div className="mr-auto"></div>
+          {/* <div className="mr-auto"></div> */}
           <ul className=" flex flex-col pl-0 mb-0 mt-0 list-none sm:flex-row">
-            <li className="nav-item active">
-              <a className={`${navLinkClassNaame} `} href="#hero">
+            <li className="nav-item">
+              <a
+                className={`${navLinkClassName} ${
+                  currentHash == "home" ? activeLinkClassName : ""
+                }`}
+                href="#home"
+              >
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className={`${navLinkClassNaame} smooth-link`} href="#about">
+              <a
+                className={`${navLinkClassName} ${
+                  currentHash == "about" ? activeLinkClassName : ""
+                }`}
+                href="#about"
+              >
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a className={`${navLinkClassNaame} smooth-link`} href="#blog">
+              <a
+                className={`${navLinkClassName} ${
+                  currentHash == "blog" ? activeLinkClassName : ""
+                }`}
+                href="#blog"
+              >
                 Portfolio
               </a>
             </li>
