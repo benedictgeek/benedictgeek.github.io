@@ -6,6 +6,7 @@ import { AppContextProvider } from "@/state/AppContextProvider";
 import { HeroSection } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Portfolio } from "@/components/Portfolio";
+import { Contact } from "@/components/Contact";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function Home() {
         <HeroSection />
         <About />
         <Portfolio />
+        <Contact />
       </AppContextProvider>
     </>
   );
