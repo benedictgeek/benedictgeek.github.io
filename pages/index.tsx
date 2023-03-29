@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { AppContextProvider } from "@/state/AppContextProvider";
 import { HeroSection } from "@/components/Hero";
+import { About } from "@/components/About";
+import { Portfolio } from "@/components/Portfolio";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,8 @@ export default function Home() {
       <AppContextProvider>
         <Header />
         <HeroSection />
-        jsbdjshkbkfjjh sf
+        <About />
+        <Portfolio />
       </AppContextProvider>
     </>
   );

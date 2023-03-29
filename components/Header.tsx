@@ -46,7 +46,7 @@ export const Header = () => {
     >
       <div className=" flex justify-between items-center flex-wrap w-full mx-auto px-[15px]">
         <a className=" w-[110px] leading-[0] p-0" href="#">
-          <img src="images/logo-light.png" alt="Logo" className="w-full" />
+          <img src="images/main-logo.png" alt="Logo" className="w-full" />
         </a>
         <button
           className="navbar-toggler sm:hidden"
@@ -112,9 +112,9 @@ export const Header = () => {
             <li className="nav-item">
               <a
                 className={`${navLinkClassName} ${
-                  currentHash == "blog" ? activeLinkClassName : ""
+                  currentHash == "portfolio" ? activeLinkClassName : ""
                 }`}
-                href="#blog"
+                href="#portfolio"
               >
                 Portfolio
               </a>

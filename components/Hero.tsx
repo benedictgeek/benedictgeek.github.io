@@ -23,7 +23,7 @@ export const HeroSection = () => {
         <div className="mt-[40px]">
           <Button
             href="#about"
-            className=" rounded-[30px] bg-[#007bff] border-[#007bff] py-[15px] px-[30px] text-[12px]"
+            className=" rounded-[30px] bg-[#1ED167] border-[#1ED167] py-[15px] px-[30px] text-[12px]"
           >
             GET STARTED
           </Button>
