@@ -22,17 +22,37 @@ export const Contact = () => {
             </div>
 
             <div className=" flex-[1_1_320px]">
-              <div className=" flex flex-wrap gap-[30px]">
-                <Input className=" flex-[1_1_250px]" placeholder="Name" />
-                <Input className=" flex-[1_1_250px]" placeholder="Email" />
-              </div>
-              <div className="flex flex-col gap-[30px] mt-[30px]">
-                <Input placeholder="Subject" />
-                <TextArea rows={5} placeholder="Message" />
-                <button className=" self-start px-[20px] py-[15px] border-2 border-black bg-black text-sm tracking-[2px] text-white font-medium hover:text-black hover:bg-transparent hover:border-2 hover:border-black transition-all">
-                  SEND MESSAGE
-                </button>
-              </div>
+              <form
+                action="https://formsubmit.co/olushola251@gmail.com"
+                method="POST"
+              >
+                <div className=" flex flex-wrap gap-[30px]">
+                  <Input
+                    className=" flex-[1_1_250px]"
+                    placeholder="Name"
+                    name="name"
+                    type="text"
+                    required
+                  />
+                  <Input
+                    className=" flex-[1_1_250px]"
+                    placeholder="Email"
+                    name="email"
+                    type="email"
+                    required
+                  />
+                </div>
+                <div className="flex flex-col gap-[30px] mt-[30px]">
+                  <Input placeholder="Subject" type="text" name="_subject" />
+                  <TextArea rows={5} placeholder="Message" name="message" />
+                  <button
+                    type="submit"
+                    className=" self-start px-[20px] py-[15px] border-2 border-black bg-black text-sm tracking-[2px] text-white font-medium hover:text-black hover:bg-transparent hover:border-2 hover:border-black transition-all"
+                  >
+                    SEND MESSAGE
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

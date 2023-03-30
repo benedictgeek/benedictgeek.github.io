@@ -1,3 +1,7 @@
+const PORTFOLIO_DATA = [{
+  
+}];
+
 export const Portfolio = () => {
   return (
     <section className="bg-[#f9f9f9] pt-[100px] pb-[70px]" id="portfolio">

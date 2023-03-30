@@ -8,7 +8,7 @@ export const About = () => {
             style={{ backgroundImage: `url(/images/avartar.png)` }}
           ></div>
         </div>
-        <div className="flex items-center text-lg px-[24px]">
+        <div className="flex items-center text-[#666] text-lg px-[24px]">
           Software engineer with 4 years of experience, passionate about
           building solutions that further makes human lives easier. I am
           well-versed in maintaining all aspects of a software development
