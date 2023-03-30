@@ -1,6 +1,28 @@
+import { useAppContext } from "@/state/AppContextProvider";
+import { useEffect, useRef } from "react";
+
 export const About = () => {
+  const { setCurrentHash } = useAppContext();
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let entry = entries[0];
+        if (entry.isIntersecting) {
+          setCurrentHash("about");
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    observer.observe(ref.current || document.body);
+    return () => observer.unobserve(ref.current || document.body);
+  }, []);
   return (
-    <section className="relative py-[50px]" id="about">
+    <section className="relative py-[50px]" id="about" ref={ref}>
       <div className="grid gap-y-[24px] grid-cols-[repeat(auto-fit,minmax(250px,auto))] max-w-[540px] ml-auto mr-auto sm:max-w-[960px]">
         <div className="flex items-center justify-center">
           <div

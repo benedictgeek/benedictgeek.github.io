@@ -13,7 +13,7 @@ interface ContextType {
 }
 
 const defaultValue: ContextType = {
-  currentHash: "home",
+  currentHash: "",
   setCurrentHash: () => {},
 };
 
@@ -22,7 +22,7 @@ export const AppContext = createContext(defaultValue);
 export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }: { children: ReactNode }) => {
-  const [currentHash, setCurrentHash] = useState("home");
+  const [currentHash, setCurrentHash] = useState("");
   return (
     <AppContext.Provider value={{ currentHash, setCurrentHash }}>
       {children}

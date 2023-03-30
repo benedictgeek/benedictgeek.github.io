@@ -1,8 +1,29 @@
+import { useAppContext } from "@/state/AppContextProvider";
 import { Input, TextArea } from "@/utility/Input";
+import { useEffect, useRef } from "react";
 
 export const Contact = () => {
+  const { setCurrentHash } = useAppContext();
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let entry = entries[0];
+        if (entry.isIntersecting) {
+          setCurrentHash("contact");
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+    observer.observe(ref.current || document.body);
+
+    return () => observer.unobserve(ref.current || document.body);
+  }, []);
   return (
-    <section className="bg-[#f9f9f9] pt-[100px] pb-[70px]" id="contact">
+    <section className="bg-[#f9f9f9] pt-[100px] pb-[70px]" id="contact" ref={ref}>
       <div className=" px-[15px] ml-auto mr-auto sm:max-w-[960px] xl:max-w-[1140px]">
         <h2 className="text-[34px] leading-[1.1] font-[500]">Contact</h2>
         <p className="text-[#868E96] font-[200] text-lg mt-[15px] mb-[15px]">
