@@ -5,62 +5,93 @@ interface Project {
   title: string;
   role: string;
   url: string;
+  image: string;
   details: string;
+  skills: string[];
 }
 
 const PORTFOLIO_DATA: Project[] = [
   {
-    title: "Airplane",
+    title: "Mochi Health",
     role: "Member",
     url: "https://www.airplane.dev/",
-    details: `Airplane provides developers with an infrastructure to create internal tools fast and easily. I contributed to the templates collection which developers can extend or customize to their needs.`,
-  },
-  {
-    title: "Helping My Friend",
-    role: "Lead",
-    url: "http://www.helpingmyfriend.com",
-    details: `A charity platform that gives people the opportunity to help others in various ways, such as through financial donations, participating in meal deliveries, signing up for work parties, and potlucks. I worked on both the front end and back end, enabling the project to go live by optimizing page loads, adding new features, and ensuring data integrity on the database.`,
+    image: "/images/portfolio/mochi.png",
+    details: `As a full stack engineer, I was involved in the development of Mochi, a platform that is dedicated to matching patients with healthcare providers without any possibility of discrimination. The platform ensures that everyone has access to the healthcare services they need, regardless of their background or circumstances.`,
+    skills: ["React", "Node.js", "DynamoDB", "Severless"],
   },
   {
     title: "Kodobe",
     role: "Lead",
     url: "https://kodobe.com",
-    details: `A gamification company website showcasing the features the business provides, pricing information, FAQs, and calls to action. I was part of the front-end team while working closely with the UI/UX team.`,
+    image: "/images/portfolio/kodobe.png",
+    details: `A gamification service provider, helping brands acquire new customers or retain existing customer base by deploying elements of gamification. I was part of the front-end team while working closely with the UI/UX team.`,
+    skills: ["React", "Next.js", "Node.js", "AWS Amplify"],
+  },
+  {
+    title: "Airplane",
+    role: "Member",
+    url: "https://www.airplane.dev/",
+    image: "/images/portfolio/airplane.png",
+    details: `Airplane provides developers with an infrastructure to create internal tools fast and easily. I contributed to the templates collection that developers can extend or customize to their needs.`,
+    skills: ["React", "Node.js"],
   },
   {
     title: "Clubly",
     role: "Lead",
     url: "https://clubly.io",
+    image: "/images/portfolio/clubly.png",
     details: `An association management platform where
 associations get to bring their activites such as
 Members management, Events, Finances, Surveys, and
 Dues to be managed by the platform.`,
+    skills: ["React", "Node.js", "AWS S3", "EC2"],
+  },
+  {
+    title: "SitePro",
+    role: "Lead",
+    url: "https://www.sitepro.ng/",
+    image: "/images/portfolio/sitepro.png",
+    details: `SitePro is a construction project management and collaboration tool, helping construction workers organize their projects seamlessly. I built the mobile application as a solo engineer and developed the backend service.`,
+    skills: ["Flutter", "Firebase", "React", "Node.js"],
   },
   {
     title: "PeerScore",
     role: "Lead",
     url: "https://peerscore.ng",
+    image: "/images/portfolio/peerscore.png",
     details: `A peer-to-peer lending mobile application
     facilitating loan repayments and ensuring financial
-    responsibility. Available for both Android and iOS
-    devices.`,
+    responsibility. In addition to building the mobile application from scratch, I also played a key role in developing the backend of the application.`,
+    skills: ["Flutter", "React", "Node.js"],
   },
-  {
-    title: "Getrates",
-    role: "Member",
-    url: "https://www.getrates.co",
-    details: `An investment platform serving as a broker between
-    users and financial institutions. The institutions
-    bring their investment products on to the platform,
-    users invest and Getrates manages their investments.`,
-  },
-  {
-    title: "JCN Fitwears",
-    role: "Lead",
-    url: "https://jcnfitwears.com",
-    details: ` An E-commerce website that specializes in the sales
-    of fitness wears.`,
-  },
+
+  // {
+  //   title: "Helping My Friend",
+  //   role: "Lead",
+  //   url: "http://www.helpingmyfriend.com",
+  //   image: "/images/portfolio/hmf.png",
+  //   details: `A charity platform that gives people the opportunity to help others in more ways other than just financial donations. I worked on both the frontend and backend, enabling the project to go live by optimizing page loads, adding new features, and ensuring data integrity on the database.`,
+  //   skills: ["HTML", "Bootsrap", "Node.js"],
+  // },
+
+  // {
+  //   title: "Getrates",
+  //   role: "Member",
+  //   url: "https://www.getrates.co",
+  //   image: "/images/portfolio/airplane.png",
+  //   details: `An investment platform serving as a broker between
+  //   users and financial institutions. The institutions
+  //   bring their investment products on to the platform,
+  //   users invest and Getrates manages their investments.`,
+  // },
+  // {
+  //   title: "JCN Fitwears",
+  //   role: "Lead",
+  //   url: "https://jcnfitwears.com",
+  //   image: "/images/portfolio/airplane.png",
+  //   details: ` An E-commerce website that specializes in the sales
+  //   of fitness wears.`,
+  // },
 ];
 export const Portfolio = () => {
   const { setCurrentHash } = useAppContext();
@@ -92,11 +123,11 @@ export const Portfolio = () => {
       <div className=" px-[15px] ml-auto mr-auto sm:max-w-[960px] xl:max-w-[1140px]">
         <h2 className="text-[34px] leading-[1.1] font-[500]">Portfolio</h2>
         <p className="text-[#868E96] font-[200] text-lg mt-[15px] mb-[15px]">
-          Have a look at some of the projects I have worked on
+          Have a look at some of the projects I have worked on...
         </p>
 
         <div className="mt-[60px]">
-          <div className=" grid gap-[50px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))]">
+          <div className=" grid gap-[50px] grid-cols-[repeat(auto-fit,minmax(280px,1fr))]">
             {PORTFOLIO_DATA.map((project, index) => {
               return (
                 <PortfolioCard key={`project_${index}`} project={project} />
@@ -111,32 +142,35 @@ export const Portfolio = () => {
 
 export const PortfolioCard = ({ project }: { project: Project }) => {
   return (
-    <article className="bg-white rounded overflow-hidden">
-      <img
-        src="/images/img01.jpg"
-        className=" max-h-[280.83px] w-full object-cover"
-      />
-      <div className="p-[1.25rem]">
-        <h4 className="text-[20px] mb-[0.75rem] font-medium">
-          <a href={project.url} target="_blank">
+    <article className="bg-white rounded overflow-hidden ">
+      <a href={project.url} target="_blank" className="flex flex-col">
+        <img
+          src={project.image}
+          className=" max-h-[280.83px] min-h-[200px] w-full object-cover"
+        />
+        <div className="p-[1.25rem] flex flex-col flex-1">
+          <h4 className="text-[20px] mb-[0.75rem] font-medium">
             {project.title}
-          </a>
-        </h4>
+          </h4>
 
-        <p className=" mb-4 text-[#666] break-all">{project.details}</p>
-        <div className="flex gap-[8px] flex-wrap">
-          <SkillChip />
-          <SkillChip />
+          <p className=" mb-4 text-[#666] break-normal flex-1">
+            {project.details}
+          </p>
+          <div className="flex gap-[8px] flex-wrap">
+            {project.skills.map((item, index) => (
+              <SkillChip key={`${project.title}_skill_${index}`} title={item} />
+            ))}
+          </div>
         </div>
-      </div>
+      </a>
     </article>
   );
 };
 
-export const SkillChip = () => {
+export const SkillChip = ({ title }: { title: string }) => {
   return (
     <div className=" w-fit bg-[#1ED167]/10 px-2 py-1 leading-[1] rounded-[1px] border border-[#1ED167] text-[#1ED167] text-center">
-      React
+      {title}
     </div>
   );
 };

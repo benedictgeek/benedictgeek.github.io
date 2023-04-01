@@ -26,7 +26,7 @@ export const Header = () => {
     const handleScroll = (evt: Event) => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-      if (scrollTop > 150) {
+      if (scrollTop > 300) {
         setFadeHeaderBg(false);
       } else {
         setFadeHeaderBg(true);
@@ -42,7 +42,7 @@ export const Header = () => {
     <nav
       className={`fixed w-full ${
         fadeHeaderBg ? "bg-transparent" : "bg-black"
-      } py-[25px] px-[1rem] z-[1] transition-colors`}
+      } py-[25px] px-[1rem] transition-colors z-50`}
     >
       <div className=" flex justify-between items-center flex-wrap w-full mx-auto px-[15px]">
         <a className=" w-[110px] leading-[0] p-0" href="#">
@@ -88,7 +88,7 @@ export const Header = () => {
           id="navbarNav"
         >
           {/* <div className="mr-auto"></div> */}
-          <ul className=" flex flex-col pl-0 mb-0 mt-0 list-none sm:flex-row">
+          <ul className=" flex flex-col gap-1 pl-0 mb-0 mt-0 list-none sm:flex-row sm:gap-y-0">
             <li className="nav-item">
               <a
                 className={`${navLinkClassName} ${
