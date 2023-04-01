@@ -146,6 +146,7 @@ export const PortfolioCard = ({ project }: { project: Project }) => {
       <a href={project.url} target="_blank" className="flex flex-col">
         <img
           src={project.image}
+          alt={project.title}
           className=" max-h-[280.83px] min-h-[200px] w-full object-cover"
         />
         <div className="p-[1.25rem] flex flex-col flex-1">
