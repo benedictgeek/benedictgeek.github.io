@@ -93,7 +93,7 @@ export const Header = () => {
             <li
               className="nav-item"
               onClick={() =>
-                sendGAEvent({ event: "navigation_tab", nav_tab: "home" })
+                sendGAEvent({ event: "navigation_click", nav_tab: "home" })
               }
             >
               <a
@@ -108,7 +108,7 @@ export const Header = () => {
             <li
               className="nav-item"
               onClick={() =>
-                sendGAEvent({ event: "navigation_tab", nav_tab: "about" })
+                sendGAEvent({ event: "navigation_click", nav_tab: "about" })
               }
             >
               <a
@@ -123,7 +123,7 @@ export const Header = () => {
             <li
               className="nav-item"
               onClick={() =>
-                sendGAEvent({ event: "navigation_tab", nav_tab: "portfolio" })
+                sendGAEvent({ event: "navigation_click", nav_tab: "portfolio" })
               }
             >
               <a
@@ -141,7 +141,7 @@ export const Header = () => {
               href="#contact"
               className="rounded-[30px] border-2 px-[20px] text-[14px] bg-transparent border-white smooth-link align-middle text-white"
               onClick={() =>
-                sendGAEvent({ event: "navigation_tab", nav_tab: "contact" })
+                sendGAEvent({ event: "navigation_click", nav_tab: "contact" })
               }
             >
               Need Help?
