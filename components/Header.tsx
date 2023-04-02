@@ -1,5 +1,6 @@
 import { useAppContext } from "@/state/AppContextProvider";
-import { Button } from "@/utility/Button";
+import { Button } from "@/utility/components/Button";
+import { sendGAEvent } from "@/utility/ga4";
 import { useEffect, useState } from "react";
 
 export const Header = () => {
@@ -89,7 +90,12 @@ export const Header = () => {
         >
           {/* <div className="mr-auto"></div> */}
           <ul className=" flex flex-col gap-1 pl-0 mb-0 mt-0 list-none sm:flex-row sm:gap-y-0">
-            <li className="nav-item">
+            <li
+              className="nav-item"
+              onClick={() =>
+                sendGAEvent({ event: "navigation_tab", nav_tab: "home" })
+              }
+            >
               <a
                 className={`${navLinkClassName} ${
                   currentHash == "home" ? activeLinkClassName : ""
@@ -99,7 +105,12 @@ export const Header = () => {
                 Home
               </a>
             </li>
-            <li className="nav-item">
+            <li
+              className="nav-item"
+              onClick={() =>
+                sendGAEvent({ event: "navigation_tab", nav_tab: "about" })
+              }
+            >
               <a
                 className={`${navLinkClassName} ${
                   currentHash == "about" ? activeLinkClassName : ""
@@ -109,7 +120,12 @@ export const Header = () => {
                 About
               </a>
             </li>
-            <li className="nav-item">
+            <li
+              className="nav-item"
+              onClick={() =>
+                sendGAEvent({ event: "navigation_tab", nav_tab: "portfolio" })
+              }
+            >
               <a
                 className={`${navLinkClassName} ${
                   currentHash == "portfolio" ? activeLinkClassName : ""
@@ -124,6 +140,9 @@ export const Header = () => {
             <Button
               href="#contact"
               className="rounded-[30px] border-2 px-[20px] text-[14px] bg-transparent border-white smooth-link align-middle text-white"
+              onClick={() =>
+                sendGAEvent({ event: "navigation_tab", nav_tab: "contact" })
+              }
             >
               Need Help?
             </Button>
