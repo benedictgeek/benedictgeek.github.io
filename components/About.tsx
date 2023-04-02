@@ -1,5 +1,5 @@
 import { useAppContext } from "@/state/AppContextProvider";
-import { Button } from "@/utility/Button";
+import { Button } from "@/utility/components/Button";
 import { useEffect, useRef } from "react";
 
 export const About = () => {

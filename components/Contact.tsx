@@ -1,5 +1,5 @@
 import { useAppContext } from "@/state/AppContextProvider";
-import { Input, TextArea } from "@/utility/Input";
+import { Input, TextArea } from "@/utility/components/Input";
 import { useEffect, useRef } from "react";
 
 export const Contact = () => {
