@@ -39,6 +39,11 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (currentHash)
+      sendGAEvent({ event: "scroll_navigation", nav_tab: currentHash });
+  }, [currentHash]);
+
   return (
     <nav
       className={`fixed w-full ${
